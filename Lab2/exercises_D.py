@@ -1,24 +1,24 @@
-# laptop = {
-#     "brand": "Dell",
-#     "model": "XPS 13",
-#     "RAM": "16GB",
-#     "storage": "512GB SSD",
-#     "price": 12000
-# }
+laptop = {
+    "brand": "Dell",
+    "model": "XPS 13",
+    "RAM": "16GB",
+    "storage": "512GB SSD",
+    "price": 12000
+}
 
-# print(f"The {laptop['brand']} {laptop['model']} has {laptop['RAM']} of RAM and {laptop['storage']} of storage. It costs {laptop['price']}sek.")
+print(f"The {laptop['brand']} {laptop['model']} has {laptop['RAM']} of RAM and {laptop['storage']} of storage. It costs {laptop['price']}sek.")
 
-# laptop["price"] = 11000
-# laptop["operating_system"] = "Windows 11"
-# laptop.pop("model")
+laptop["price"] = 11000
+laptop["operating_system"] = "Windows 11"
+laptop.pop("model")
 
-# print(laptop)
-# print(laptop.get("model"))
-# print(laptop.get("price"))
+print(laptop)
+print(laptop.get("model"))
+print(laptop.get("price"))
 
-# print(laptop.values())
-# print(laptop.items())
-# print(laptop.values())
+print(laptop.values())
+print(laptop.items())
+print(laptop.values())
 
 study_hours = {
     "python basic": 33,
