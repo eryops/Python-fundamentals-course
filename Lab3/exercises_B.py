@@ -1,36 +1,36 @@
-# empty_string = ""
-# string = "en sträng"
-# zero_int = 0
-# not_zero_int = 10
-# empty_list = []
-# not_empty_list = ['element']
+empty_string = ""
+string = "en sträng"
+zero_int = 0
+not_zero_int = 10
+empty_list = []
+not_empty_list = ['element']
 
-# if not empty_string:
-#     print('empty string')
-# if string:
-#     print('Not empty string')
-# if not zero_int:
-#     print('int zero')
-# if not_zero_int:
-#     print('Int not zero', not_zero_int)
-# if not empty_list:
-#     print('empty list')
-# if not_empty_list:
-#     print('List with data', not_empty_list)
+if not empty_string:
+    print('empty string')
+if string:
+    print('Not empty string')
+if not zero_int:
+    print('int zero')
+if not_zero_int:
+    print('Int not zero', not_zero_int)
+if not empty_list:
+    print('empty list')
+if not_empty_list:
+    print('List with data', not_empty_list)
 
-# language_list = ['Swedish', 'Germen', 'English', 'Norwegian']
+language_list = ['Swedish', 'Germen', 'English', 'Norwegian']
 
-# print('Swedish' in language_list)
-# print('swedish' in language_list)
+print('Swedish' in language_list)
+print('swedish' in language_list)
 
-# blocked_users = ['Erik', 'Jonas', 'John']
+blocked_users = ['Erik', 'Jonas', 'John']
 
-# username = input("Your username: ")
+username = input("Your username: ")
 
-# if username in blocked_users:
-#     print('You are blocked')
-# else:
-#     print('Welcome')
+if username in blocked_users:
+    print('You are blocked')
+else:
+    print('Welcome')
 
 is_member = False
 
