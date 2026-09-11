@@ -23,3 +23,17 @@ if len(text) >= 4:
 
 print(text)
 
+# predict the value output
+value = int('1') + 3
+print(value)
+
+text = "Python"
+print(text[1:4])
+
+print(text[-4:])
+
+numbers = [10, 20, 30]
+print(numbers[2]*2)
+
+name = "Johanna"
+print(name[::-1])
