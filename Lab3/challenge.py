@@ -83,7 +83,7 @@ flights = [
         'flight_number': 'KLM387',
         'destination': 'Amsterdam',
         'departure_time': '14:45',
-        'gate': '4D',
+        'gate': '',
         'passengers': 22,
         'maximum_capacity': 167,
         'delay_in_minutes': 19,
@@ -135,7 +135,7 @@ for flight in flights:
     elif status != 'CANCELLED':
         number_of_delayed_flights += 1    
 
-    print(f"{flight['flight_number']} to {flight['destination']} leaving from Gate {flight['gate']} at {flight['departure_time']} is {status}")
+    print(f"{flight['flight_number']} to {flight['destination']} leaving from Gate {flight['gate'] or 'Gate not assigned'} at {flight['departure_time']} is {status}")
 
 print(f"""
 number_of_scheduled_flights {number_of_scheduled_flights}
@@ -147,3 +147,14 @@ average_number_of_passengers {total_number_of_passengers/number_of_scheduled_fli
 largest_number_of_passengers {largest_number_of_passengers}
 number_of_flight_with_80_percent_filled {number_of_flight_with_80_percent_filled}
 """)
+
+search_flight = input("Search for a flight: ")
+search_flight_not_found = True
+
+for flight in flights:
+    if flight['flight_number'] == search_flight:
+        print(f"{flight['flight_number']} to {flight['destination']} leaving from Gate {flight['gate']} at {flight['departure_time']} is {status}")
+        search_flight_not_found = False
+        break
+if search_flight_not_found:
+    print('Flight not found')
