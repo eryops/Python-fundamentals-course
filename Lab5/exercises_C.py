@@ -28,3 +28,5 @@ print(first, middle, last)
 values = [5, 6, 7, 8, 9, 10]
 first, *middle, last = values
 print(first, middle, last)
+
+# * in a function *args takes in as many arguments that the user sends in * in a function call is to split an list/tuple etc into the functions parameters
