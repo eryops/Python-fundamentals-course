@@ -1,59 +1,50 @@
-def greet():
-    return 'Hello'
+course_name = 'Python fundamentals'
 
-def show_course_name():
-    return 'Python fundamentals'
+def return_course_name():
+    course_name = 'PHP fundamentals'
+    return course_name
 
-def print_separator():
-    print('-------------------')
+def counter_function():
+    counter = 0
+    while counter < 5:
+        counter += 1
+    return counter
+
+counting = 10   # global variable
+# def increase():
+#     counting = counting + 1   # trying to change global value, will fail
+#     print(counting)
 
 
-print(greet())
-print(show_course_name())
-print_separator()
-print(greet())
-print(show_course_name())
-print_separator()
-print(greet())
-print(show_course_name())
-print_separator()
-print(greet())
-print(show_course_name())
-print_separator()
+def increase(value):
+    value = value + 1
+    return value
 
-def greet_person(name):
-    return f"Hello {name}!"
 
-def introduce(name, city):
-    # parameters name and city
-    return f"This is {name} and they are from {city}"
+def outer():
+    count = 5
 
-print(greet_person('Johanna'))
-print(introduce('Johanna', 'Åkersberga')) # arguments are sent in to the function (Johanna, Åkersberga)
-print_separator()
+    def inner():
+        count = 10
+        print('inner counter: ', count) 
+    inner() # will print 10
+    print('outer counter: ', count) # will print 5
 
-def add(a, b):
-    return a + b
 
-def subtract(a, b):
-    return a - b
+# Example on how to avoid shadowing build ins
+# number_list instead of list
+# string instead of str
+# max_value instead of max
 
-def multiply(a, b):
-    return a * b
 
-def divide(a, b):
-    return a / b
+# --- Main like section ---
+print(course_name) # will print the global variable that is set outside the function because we don´t have access to the scoped variable outside of the function
+print(return_course_name()) # will print the scoped variable in side the function and not the global one outside the function
 
-print(add(10, 56))
-print(subtract(10, 56))
-print(multiply(10, 56))
-print(divide(10, 56))
-print_separator()
+#print(counter) # not available because it is inside of the scope of a function
+print(counter_function())
 
-def calculate_area(area_width, area_height):
-    return area_width * area_height
+counting = increase(counting)
+print(counting)
 
-def cost_per_square_meter(total_cost):
-    return total_cost / calculate_area(120, 30)
-
-print(cost_per_square_meter(2500000))
+outer()
