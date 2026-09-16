@@ -9,13 +9,13 @@ for number in range(1, 51):
 
 numbers = [1, 4, 9, 6]
 
-sum_of_numbers = 0;
+sum_of_numbers = 0
 
 for number in numbers:
     sum_of_numbers += number
 print(sum_of_numbers)
 
-largest_number = 0;
+largest_number = 0
 
 for number in numbers:
     if number > largest_number:
