@@ -47,3 +47,39 @@ print(call_summary('function', 10, 20, **defaults))
 
 print(statistics(*numbers))
 print(statistics())
+
+# --- Predict the output
+num = 10
+def num_test():
+    num = 5
+    return num
+print(num_test()) # print 5
+print(num) # print 10
+
+
+def names(*names):
+    return names
+print(names('Anna', 'Eva', 'Lisa')) # Will print a list with the names
+
+
+def names_scores(**kwarg):
+    return kwarg
+print(names_scores(anna = 10, eva = 23, lisa = 34)) # will print a dictionary with name: score
+
+
+def even_numbers(*numbers):
+    new_list = []
+    for number in numbers:
+        if number % 2 == 0:
+            new_list.append(number)
+    return new_list
+print(even_numbers(8,9,10,22,33,45)) # prints a list with just the even numbers
+
+
+def names_from_kwargs(**kwargs):
+    names_list = []
+
+    for key in kwargs.keys():
+        names_list.append(key)
+    return names_list
+print(names_from_kwargs(anna = 10, eva = 23, lisa = 34)) # prints a list with just the names
