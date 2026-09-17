@@ -29,5 +29,8 @@ uniq_categories = {product['category'] for product in normalize_products}
 
 products_value = {product['name']: product['price']*product['stock'] for product in normalize_products}
 
-sort_products_by_value = sorted(products_value, key=lambda item: item[1], reverse=True)
+sort_products_by_value = sorted(products_value.items(), key=lambda item: item[1], reverse=True)
+
+for rank, (product_name, inventory_value) in enumerate(sort_products_by_value, 1):
+    print(f'{rank}. {product_name}´s inventory value: {inventory_value}')
 
