@@ -212,3 +212,10 @@ print("TOURNAMENT LEADERBOARD")
 for rank, player in enumerate(order_by_highest_scorer, 1):
     name, score = player['name'], player['score']
     print(f'{rank}. {name} - {score} points')
+
+players_by_team = {
+    team: [player['name'] for player in normalized_player_data if player['team'] == team]
+    for team in teams
+}
+player_wins_over_five = {player['name']: player['wins'] for player in normalized_player_data if player['wins'] > 5}
+print(player_wins_over_five)
