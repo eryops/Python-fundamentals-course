@@ -25,14 +25,6 @@ def create_order(order_id, customer, *products, **options):
         'options': options
     }
 
-
-order1 = create_order(22, customers[1], products[1], products[0], shipping_method = 'pick up', shipping = None)
-order2 = create_order(23, customers[0], 'Notebook', 'Keyboard', shipping_method = 'pick up')
-order3 = create_order(24, customers[1], 'Notebook', 'Backpack', 'Water Bottle', shipping_method = 'post', campaign_code = 'free-delivery')
-order4 = create_order(25, customers[1], 'Keyboard', 'Notebook', 'Backpack', shipping_method = 'post', priority = 'express')
-order5 = create_order(26, customers[1], 'Notebook', 'Backpack', shipping_method = 'pick up')
-
-
 def calculate_subtotal(*prices): 
     return sum(prices) if prices else 0
 
@@ -51,6 +43,7 @@ def order_summary(order_id, customer, *messages, **metadata):
             summery += f'{key}: {value}\n'
 
     return summery
+
 def order_processing(customer, *products, **metadata):
     prices = [product['price'] for product in products]
     subtotal = calculate_subtotal(*prices)
@@ -76,4 +69,48 @@ def order_processing(customer, *products, **metadata):
         'options': metadata
     }
 
-print(order_processing(customers[2], products[0], products[5], products[3], priority = 'express', shipping = 44, discount = None))
+order_1 = order_processing(customers[1], products[0], discount = 22)
+order_2 = order_processing(customers[0], products[7], products[5], shipping = 43)
+order_3 = order_processing(customers[2], products[3], products[4], products[6], shipping = 99, discount = 10)
+order_4 = order_processing(customers[3], products[5], products[0], products[4], shipping = 65, priority = 'express')
+order_5 = order_processing(customers[4], products[3], products[4], shipping = 44)
+
+all_orders = [order_1, order_2, order_3, order_4, order_5]
+
+# print(order_processing(customers[2], products[0], products[5], products[3], priority = 'express', shipping = 44, discount = None))
+
+def create_report(title, *sections, **metadata):
+    return {
+        'title': title,
+        'sections': sections,
+        'metadata': metadata
+    }
+
+def report_to_string(report):
+    text = f'REPORT: {report['title']}\n'
+    for section in report['sections']:
+        text += f'{section}\n'
+
+    if report['metadata']:
+        text += 'Metadata:\n'
+        for key, value in report['metadata'].items():
+            text += f'{key}: {value}\n'
+
+    return text
+num_orders = len(all_orders)
+total_revenue = sum(order['final_total'] for order in all_orders)
+average_value = total_revenue / num_orders
+largest_order = max(all_orders, key=lambda order: order['final_total'])
+smallest_order = min(all_orders, key=lambda order: order['final_total'])
+
+report = create_report(
+    'Daily Order Report', 
+    f'Number of orders: {num_orders}', 
+    f"Total revenue: {total_revenue}",
+    f"Average order value: {average_value:.2f}",
+    f"Largest order: {largest_order['final_total']}",
+    f"Smallest order: {smallest_order['final_total']}",
+    generated_by ='Bot Bottson',
+    version = '0.1.2-v',
+)
+print(report_to_string(report))
