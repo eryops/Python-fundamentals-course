@@ -26,10 +26,10 @@ def create_order(order_id, customer, *products, **options):
     }
 
 
-order1 = create_order(22, customers[1], 'Headphones', 'Backpack', shipping_method = 'pick up', shipping = None)
+order1 = create_order(22, customers[1], products[1], products[0], shipping_method = 'pick up', shipping = None)
 order2 = create_order(23, customers[0], 'Notebook', 'Keyboard', shipping_method = 'pick up')
 order3 = create_order(24, customers[1], 'Notebook', 'Backpack', 'Water Bottle', shipping_method = 'post', campaign_code = 'free-delivery')
-order4 = create_order(25, customers[1], 'Keyboard', 'Notebook', 'Backpack', shipping_method = 'post', priority = 'next_day')
+order4 = create_order(25, customers[1], 'Keyboard', 'Notebook', 'Backpack', shipping_method = 'post', priority = 'express')
 order5 = create_order(26, customers[1], 'Notebook', 'Backpack', shipping_method = 'pick up')
 
 
@@ -51,4 +51,29 @@ def order_summary(order_id, customer, *messages, **metadata):
             summery += f'{key}: {value}\n'
 
     return summery
-print(order_summary(22, customers[0], "snyggt kör", 'bra pris', shipping = 33, discount = 5))
+def order_processing(customer, *products, **metadata):
+    prices = [product['price'] for product in products]
+    subtotal = calculate_subtotal(*prices)
+    final_cost = subtotal
+
+    discount = metadata.get('discount', 0)
+    shipping_fee = metadata.get('shipping', 0)
+
+    if metadata.get('priority') == 'express':
+        shipping_fee += 45
+
+    if discount: 
+        final_cost -= subtotal * (discount / 100)
+    final_cost += shipping_fee
+
+    return {
+        'customer': customer,
+        'products': products,
+        'subtotal': subtotal,
+        'discount': discount,
+        'shipping_cost': shipping_fee,
+        'final_total': final_cost,
+        'options': metadata
+    }
+
+print(order_processing(customers[2], products[0], products[5], products[3], priority = 'express', shipping = 44, discount = None))
