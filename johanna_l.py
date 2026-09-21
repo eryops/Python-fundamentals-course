@@ -171,7 +171,7 @@ order_players_by_score = sorted(players, key=lambda player: player['score'], rev
 
 for ranking, player in enumerate(order_players_by_score, 1):
     player_name = player['name'].strip().title()
-    print(f"{ranking}. {player_name}")
+    print(f"{ranking}. {player_name} - {player['score']}")
 
 player_scores = [player['score'] for player in players]
 
