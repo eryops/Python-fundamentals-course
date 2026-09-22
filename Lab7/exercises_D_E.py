@@ -6,6 +6,25 @@ class Student:
     def get_status(self):
         return 'PASS' if self.score >= 70 else 'FAIL'
 
+class Teacher:
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return self.name
+
+class Course:
+    def __init__(self, course_name, teacher):
+        self.course_name = course_name
+        self.teacher = teacher
+        self.students = []
+
+    def add_student(self, student):
+        self.students.append(student)
+
+
+# --- Main like section ---
+
 student1 = Student("Astrid", 45)
 student2 = Student("Stig", 99)
 student3 = Student("Ali", 77)
@@ -25,3 +44,13 @@ passing_students = [student for student in students if student.get_status() == '
 for student in passing_students:
     print(student.name, student.score)
 
+teacher_one = Teacher('Nils')
+course_one = Course('Python', teacher_one)
+course_one.add_student(student1)
+course_one.add_student(student2)
+course_one.add_student(student3)
+
+print(course_one.teacher, course_one.course_name)
+
+course_students = [student.name for student in course_one.students]
+print(course_students)
