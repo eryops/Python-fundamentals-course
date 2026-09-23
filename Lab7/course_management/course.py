@@ -22,5 +22,8 @@ class Course:
     def passed_students(self):
          return [student for student in self.students if student.get_status() == 'PASS']
 
+    def students_above(self, threshold):
+        return [student for student in self.students if student.score > threshold]
+
     def __repr__(self):
             return f'{self.course_name} - teacher {self.teacher}, students {self.students}'
