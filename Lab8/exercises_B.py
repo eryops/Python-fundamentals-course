@@ -15,3 +15,6 @@ class Movie:
 
 movie = Movie('Movie name', 'NN', 8.7)
 print(movie.is_highly_rated())  
+
+# Directory is better whit simple logic, like small static data
+# Class is better when when combining function with data or it will be used in larger programs. 
