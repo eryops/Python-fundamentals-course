@@ -9,7 +9,7 @@ class Laptop(Device):
         self.ram_gb = ram_gb
 
     def __repr__(self):
-            return f'Laptop {self.brand}, year {self.year}, ram {self.ram_gb}GB'
+        return f'Laptop {self.brand}, year {self.year}, ram {self.ram_gb}GB'
 
 class Phone(Device):
     def __init__(self, brand, year, model):
