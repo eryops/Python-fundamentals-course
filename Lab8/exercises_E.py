@@ -18,3 +18,9 @@ class Phone(Device):
 
     def __repr__(self):
         return f'Phone {self.brand}, year {self.year}, model {self.model}'
+
+laptop = Laptop("lenovo", 2018, 16)
+phone = Phone("samsung", 2021, "Galaxy S21")
+
+print(laptop)
+print(phone)
